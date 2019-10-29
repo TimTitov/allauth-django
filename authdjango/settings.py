@@ -25,7 +25,7 @@ SECRET_KEY = '0bw&zca(j%9_8f%2z@b!pf%0a)%%1yq3y$jk_k6k_!q+79ff@z'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,19 +37,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'users',
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
     'api',
-    'django.contrib.sites',
+
     'allauth',
     'allauth.account',
-    #'allauth.socialaccount',
+    'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
     'rest_auth.registration',
 ]
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 AUTH_USER_MODEL = 'users.CustomUser'
 SITE_ID = 1
 
@@ -84,7 +86,7 @@ TEMPLATES = [
 ]
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-   # 'allauth.account.auth_backends.AuthenticatinBackend',
+    'allauth.account.auth_backends.AuthenticatinBackend',
 )
 WSGI_APPLICATION = 'authdjango.wsgi.application'
 
@@ -137,3 +139,27 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+#~~~~~~~~~~~~~
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS =1
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
+ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 86400 # 1 day. This does ot prevent admin login frombeing brut forced.
+ACCOUNT_LOGOUT_REDIRECT_URL ='/accounts/login/' #or any other page
+LOGIN_REDIRECT_URL = '/xxxxxxxxxxx/' # redirects to profile page by default
+ACCOUNT_PRESERVE_USERNAME_CASING = False # reduces the delays in iexact lookups
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
+ACCOUNT_UNIQUE_EMAIL=True
+ACCOUNT_USERNAME_MIN_LENGTH = 5
+ACCOUNT_USERNAME_REQUIRED =True
+ACCOUNT_USERNAME_VALIDATORS = None
+
+
+
+
+
+
+
+
+
+#~~~~~
