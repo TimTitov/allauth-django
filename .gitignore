@@ -3,3 +3,10 @@ venv
 db.sqlite3
 venv3.7
 .pyc
+__pycache__/
+.idea
+db.sqlite3
+.vscode
+*.pyc
+venv
+.json
