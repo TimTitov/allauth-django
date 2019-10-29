@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -86,7 +87,7 @@ TEMPLATES = [
 ]
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticatinBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 )
 WSGI_APPLICATION = 'authdjango.wsgi.application'
 
@@ -163,3 +164,4 @@ ACCOUNT_USERNAME_VALIDATORS = None
 
 
 #~~~~~
+django_heroku.settings(locals())
